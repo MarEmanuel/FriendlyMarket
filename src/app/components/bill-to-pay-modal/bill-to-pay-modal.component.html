@@ -1,0 +1,27 @@
+<!-- Diseño del modal: Muestra una factura (resumen de datos de compra) -->
+<h2 mat-dialog-title>Factura - Número {{billNumber}} </h2>
+<div mat-dialog-content>
+  <table class="border" style="width: 100%">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio Unitario</th>
+        <th>Cantidad</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data.items">
+        <td>{{ item.product.title }}</td>
+        <td>{{ item.product.price | currency }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.totalPrice | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 style="text-align: right;">Total a Pagar: {{ data.totalAmount | currency }}</h2>
+  <h4>Gracias por su compra en FriendlyMarket. ¡Vuelva pronto!</h4>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">Cerrar</button>
+</div>

@@ -1,0 +1,23 @@
+<div class = "login-background">
+    <h2>Inicio de Sesión: Friendly Market</h2>
+    <h4>Los mejores productos a los precios más accesibles</h4>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <!-- Ingreso del nombre de usuario -->
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre de usuario</mat-label>
+            <input matInput formControlName="username" required>
+            <mat-error *ngIf="loginForm.get('username')?.hasError('required')">Este campo es obligatorio.</mat-error>
+        </mat-form-field>
+
+        <!-- Ingreso de la contraseña -->
+        <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="password" required>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Este campo es obligatorio.</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Iniciar sesión</button>
+    </form>
+</div>

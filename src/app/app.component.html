@@ -1,0 +1,25 @@
+<!-- Barra de navegación. -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Tienda en línea: Friendly Market</span>
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button aria-label="Open cart" [routerLink]="['/productos']">
+      <mat-icon>shopping_basket</mat-icon>
+    </button>
+
+    <button mat-icon-button aria-label="Open cart" [routerLink]="['/carrito']">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+
+    <button mat-icon-button aria-label="Log out" (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Redireccionamiento a los componentes creados, mantieniendo visible la barra de navegación. -->
+<router-outlet></router-outlet>

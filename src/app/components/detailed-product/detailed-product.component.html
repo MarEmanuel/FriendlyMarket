@@ -1,0 +1,57 @@
+<div class = "received-product-data">
+    <div class="detailed-information">
+
+        <!-- Imagen del producto, recibida dentro del objeto "product" -->
+        <div class="photo-container">
+            <img [src]="product.thumbnail" alt="{{ product.title }}">
+        </div>
+        
+        <!-- Datos del producto, recibidos dentro del objeto "product" -->
+        <div class="data-container">
+            <div class = "data-container-header">
+                <h1><strong>{{ product.title }}</strong></h1>
+                <p>Precio: {{ product.price | currency }}</p>
+            </div>
+
+            <hr>
+
+            <p>Descripción: {{ product.description }}</p>
+            <p>Stock disponible: {{ product.stock }}</p>
+            <p>Reseñas:</p>
+            <ul>
+                <li *ngFor="let review of product.reviews">
+                  {{ review.rating }} estrellas: {{ review.comment }}
+                </li>
+            </ul>
+
+            <div class = "data-container-end">
+                <!-- Input que registre el ingreso de la cantidad del producto a comprar -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Cantidad</mat-label>
+                    <input 
+                    id = "quantity" #quantityInput 
+                    matInput type="number" min="0" 
+                    placeholder="Ingrese un número" required
+                    value = 1>
+                    <mat-hint>Cantidad de items a comprar</mat-hint>
+                </mat-form-field>
+
+                <!-- Botones de acción -->
+                <div class = "action-buttons">
+                    <button 
+                        style="margin-right: 10px;"
+                        mat-raised-button color="warn" 
+                        [routerLink]="['/productos']">
+                        <mat-icon>arrow_back</mat-icon>
+                        Volver a Productos
+                    </button>
+
+                    <button mat-raised-button color="primary" (click)="addToCart(quantityInput.valueAsNumber)">
+                        <mat-icon>shopping_cart</mat-icon>
+                        Añadir al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

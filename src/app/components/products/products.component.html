@@ -1,0 +1,32 @@
+<!-- Contenedor con las herramientas de filtrado. -->
+<div class="filter-box">
+    <h4>Del menú que se despliega, seleccione cuál categoría desea visualizar</h4>
+    <mat-form-field appearance="outline">
+      <mat-label>Categorías</mat-label>
+      <mat-select [(value)]="selectedCategory" (selectionChange)="changeCategory()">
+        <mat-option *ngFor="let category of availableCategories" [value]="category">
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
+
+<!-- Contenedor con los productos filtrados. -->
+<div class="product-list">
+    <mat-card *ngFor="let product of filteredProducts" class="product-card">
+      <mat-card-header>
+        <mat-card-title>{{ product.title }}</mat-card-title>
+        <mat-card-subtitle>Precio: {{ product.price | currency }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <img mat-card-image [src]="product.thumbnail" alt="{{ product.title }}">
+
+      <mat-card-content>
+        <p>{{ product.description }}</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="openDetailedProduct(product.id)">Más detalles</button>
+      </mat-card-actions>
+    </mat-card>
+</div>

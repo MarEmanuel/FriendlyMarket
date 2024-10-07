@@ -1,0 +1,49 @@
+<div class="cart-box">
+    <h1><strong>Mi carrito</strong></h1>
+
+    <!-- Si no hay elementos en el carrito, muestra el mensaje a continuación. -->
+    <div *ngIf="items.length === 0">
+      <p>El carrito está vacío.</p>
+    </div>
+
+    <!-- De existir elementos, se presentan con un diseño establecido. -->
+    <div *ngIf="items.length > 0">
+        <div *ngFor="let item of items">
+            <div class = "card-item">
+                <div class = "card-item-data">
+                    <h2>{{ item.product.title }}</h2>
+                    <p>Precio: {{ item.product.price | currency }}</p>
+                    <p>Cantidad: {{ item.quantity }}</p>
+                    <p>Total: {{ item.totalPrice | currency }}</p>
+                    <button 
+                        mat-raised-button color="warn"
+                        (click)="removeFromCart(item.product.id)">
+                        Eliminar producto
+                    </button>
+                </div>
+                <div class = "card-item-photo">
+                    <img [src]="item.product.thumbnail" alt="{{ item.product.title }}">
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <!-- De existir elementos, se muestra el total a pagar junto con los botones de función. -->
+    <div *ngIf="items.length > 0">
+      <h2>Total a pagar: {{ totalAmount | currency }}</h2>
+      
+      <button 
+        mat-raised-button color="primary"
+        (click)="buyItems()">
+        Realizar Compra
+        </button>
+      
+      <button
+        style = "margin-left: 10px;"
+        mat-raised-button color="warn"
+        (click)="clearCart()">
+        Vaciar Carrito
+        </button>
+    </div>
+</div>
+  

@@ -1,0 +1,35 @@
+.cart-box{
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid lightgray;
+    padding: 2%;
+    margin: 2%;
+    margin-bottom: 0;
+}
+
+.card-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.card-item-data {
+    flex: 1;
+}
+
+.card-item-photo {
+    margin-left: 20px;
+}
+
+.card-item-photo img {
+    max-width: 150px;
+    height: auto;
+}
+
+.card-item:hover{
+    background-color: lightcyan;
+}
